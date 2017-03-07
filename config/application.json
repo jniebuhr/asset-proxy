@@ -1,0 +1,16 @@
+{
+  "server": {
+    "port": 8080
+  },
+  "filters": {
+    "cssMinify": {},
+    "jsMinify": {},
+    "pngCompress": {}
+  },
+  "filterMappings": {
+    "text/css": ["cssMinify"],
+    "application/javascript": ["jsMinify"],
+    "text/javascript": ["jsMinify"],
+    "image/png": ["pngCompress"]
+  }
+}
