@@ -1,0 +1,25 @@
+---
+baseUrl: https://www.sebuyo.com
+alwaysFilter: false
+directories:
+  cache: data/cache
+  source: data/source
+  meta: data/meta
+server:
+  port: 8080
+filters:
+  jsminify:
+    name: JsMinify
+  cssminify:
+    name: CssMinify
+  pngcompress:
+    name: PngCompress
+filterMappings:
+  text/css:
+    - cssminify
+  application/javascript:
+    - jsminify
+  text/javascript:
+    - jsminify
+  image/png:
+    - pngcompress

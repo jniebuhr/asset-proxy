@@ -1,34 +1,26 @@
 package main
 
 import (
-    "os"
-    "encoding/json"
+    "github.com/spf13/viper"
     "fmt"
 )
 
-type ServerConfiguration struct {
-    port int
-}
 
-type FilterConfiguration struct {
-    name string
-    options map[string]string
-}
+func SetupConfig() {
+    viper.SetConfigName("asset-proxy")
+    viper.AddConfigPath("/etc/asset-proxy")
+    viper.AddConfigPath("$HOME/.asset-proxy")
+    viper.AddConfigPath("config")
 
-type Configuration struct {
-    server ServerConfiguration
-    filters map[string]FilterConfiguration
-    filterMappings map[string][]string
-}
+    viper.SetDefault("verbose", false)
+    viper.SetDefault("server.port", 8080)
+    viper.SetDefault("directories.cache", "data/cache")
+    viper.SetDefault("directories.source", "data/source")
+    viper.SetDefault("directories.meta", "data/meta")
+    viper.SetDefault("alwaysFilter", false)
 
-func LoadConfiguration() Configuration {
-    file, _ := os.Open("config/application.json")
-    decoder := json.NewDecoder(file)
-    configuration := Configuration{}
-    err := decoder.Decode(&configuration)
-    if err != nil {
-        fmt.Println("error: ", err)
+    err := viper.ReadInConfig() // Find and read the config file
+    if err != nil { // Handle errors reading the config file
+        panic(fmt.Errorf("Fatal error config file: %s \n", err))
     }
-
-    return configuration
 }

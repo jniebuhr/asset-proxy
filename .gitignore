@@ -2,3 +2,4 @@
 /goenv/
 *.iml
 vendor/
+data/
