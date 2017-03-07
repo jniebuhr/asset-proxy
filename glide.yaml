@@ -1,0 +1,3 @@
+package: .
+import:
+- package: gopkg.in/kataras/iris.v6

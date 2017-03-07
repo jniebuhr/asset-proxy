@@ -1,3 +1,4 @@
 .idea/
 /goenv/
 *.iml
+vendor/
