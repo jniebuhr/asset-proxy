@@ -1,5 +1,5 @@
 ---
-baseUrl: https://www.sebuyo.com
+baseUrl: https://www.example.com
 alwaysFilter: false
 directories:
   cache: data/cache
