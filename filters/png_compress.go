@@ -21,7 +21,7 @@ func (f PngCompress) Process(content []byte) []byte {
         fmt.Println("couldn't decode image")
         return content
     }
-    out := lossypng.Compress(in, lossypng.NoConversion, 20)
+    out := lossypng.Compress(in, lossypng.NoConversion, 10)
     outWriter := new(bytes.Buffer)
     png.Encode(outWriter, out)
     return outWriter.Bytes()
